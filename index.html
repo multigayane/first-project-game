@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Tic-Tac-Toe for Three</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app" class="app">
+    <header class="app-header">
+      <h1>Tic-Tac-Toe for Three</h1>
+      <p class="game-info" data-game-info hidden></p>
+    </header>
+
+    <form class="setup" data-setup>
+      <fieldset>
+        <legend>Game</legend>
+        <div class="choices choices--variant">
+          <label class="choice">
+            <input type="radio" name="variant" value="childsplay" checked>
+            <span class="choice-box"><span class="choice-title">Child's Play</span><span class="choice-desc">3 in a row, marks stay</span></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="variant" value="houdini">
+            <span class="choice-box"><span class="choice-title">Houdini</span><span class="choice-desc">4 in a row, 4 marks each, oldest vanishes</span></span>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Your mark</legend>
+        <div class="choices">
+          <label class="choice">
+            <input type="radio" name="mark" value="1" checked>
+            <span class="choice-box"><span data-mark-icon="1"></span><span>Cross</span></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="mark" value="2">
+            <span class="choice-box"><span data-mark-icon="2"></span><span>Circle</span></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="mark" value="3">
+            <span class="choice-box"><span data-mark-icon="3"></span><span>Triangle</span></span>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Mode</legend>
+        <div class="choices choices--mode">
+          <label class="choice">
+            <input type="radio" name="mode" value="single" checked>
+            <span class="choice-box">Single game</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="mode" value="match">
+            <span class="choice-box">Match of 3 rounds</span>
+          </label>
+        </div>
+      </fieldset>
+      <p class="hint">4×4 board, three players: you against two computer players.</p>
+      <button type="submit" class="btn btn--primary" data-start>Start</button>
+    </form>
+
+    <section class="game" data-game hidden aria-label="Game">
+      <ol class="players" data-players aria-label="Players"></ol>
+      <div class="board" data-board role="group" aria-label="Board"></div>
+      <p class="status" data-status aria-live="polite"></p>
+      <div class="actions">
+        <button type="button" class="btn btn--primary" data-next-round hidden>Next round</button>
+        <button type="button" class="btn" data-new-game>New game</button>
+      </div>
+    </section>
+  </main>
+  <script type="module">
+    import { init } from './src/ui.js';
+    init(document.getElementById('app'));
+  </script>
+</body>
+</html>
